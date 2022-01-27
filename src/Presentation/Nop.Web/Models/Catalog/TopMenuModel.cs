@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Nop.Web.Framework.Models;
+using Nop.Web.Models.Common;
 
 namespace Nop.Web.Models.Catalog
 {
@@ -28,6 +29,8 @@ namespace Nop.Web.Models.Catalog
         public bool DisplayContactUsMenuItem { get; set; }
 
         public bool UseAjaxMenu { get; set; }
+
+        public HeaderLinksModel HeaderLinksModel {get; set;}
 
         public bool HasOnlyCategories => Categories.Any()
                        && !Topics.Any()

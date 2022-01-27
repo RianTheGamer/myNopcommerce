@@ -1,5 +1,7 @@
 ﻿@model TopMenuModel
 
+@inject Nop.Core.IWebHelper webHelper
+
 @functions {
     async Task CategoryLine(TopMenuModel.CategoryLineModel lineModel)
     {
@@ -103,6 +105,15 @@
                 @if (Model.DisplayContactUsMenuItem)
                 {
                     <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
+                }
+                @if (Model.HeaderLinksModel.IsAuthenticated)
+                {
+                    <li class="logout"><a href="@Url.RouteUrl("Logout")"><i class="fa fa-gear"></i> <span>@T("Account.Logout")</span></a></li>
+                }
+                else
+                {
+                    var returnUrl = webHelper.GetRawUrl(Context.Request);
+                    <li class="login"><a href="@Url.RouteUrl("Login", new { returnUrl })"><i class="fa fa-gear"></i> <span>@T("Account.Login")</span></a></li>
                 }
                 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMenuAfter })
             </ul>

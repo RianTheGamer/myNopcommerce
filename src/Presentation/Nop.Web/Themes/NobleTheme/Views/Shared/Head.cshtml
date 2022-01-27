@@ -20,6 +20,16 @@
         Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/font-awesome.min.css");
         Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/bootstrap.min.css");
         Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/owl.carousel.min.css");
+
+        //custom css
+        Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/style.css");
+        Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/custom/grid-system.css");
+        Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/custom/style.css");
+        Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/custom/salient-dynamic-styles.css");
+
+        //google css
+        Html.AppendCssFileParts($"https://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C700&amp;#038;subset=latin%2Clatin-ext");
+        Html.AppendCssFileParts($"https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&amp;display=swap");
     }
     //add jQuery UI css file
     Html.AppendCssFileParts("~/lib_npm/jquery-ui-dist/jquery-ui.min.css");

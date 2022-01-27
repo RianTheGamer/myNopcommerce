@@ -72,6 +72,7 @@ namespace Nop.Web.Factories
         private readonly IWorkContext _workContext;
         private readonly MediaSettings _mediaSettings;
         private readonly VendorSettings _vendorSettings;
+        private readonly ICommonModelFactory _commonModelFactory;
 
         #endregion
 
@@ -107,7 +108,8 @@ namespace Nop.Web.Factories
             IWebHelper webHelper,
             IWorkContext workContext,
             MediaSettings mediaSettings,
-            VendorSettings vendorSettings)
+            VendorSettings vendorSettings,
+            ICommonModelFactory commonModelFactory)
         {
             _blogSettings = blogSettings;
             _catalogSettings = catalogSettings;
@@ -140,6 +142,7 @@ namespace Nop.Web.Factories
             _workContext = workContext;
             _mediaSettings = mediaSettings;
             _vendorSettings = vendorSettings;
+            _commonModelFactory = commonModelFactory;
         }
 
         #endregion
@@ -564,7 +567,8 @@ namespace Nop.Web.Factories
                 DisplayBlogMenuItem = _displayDefaultMenuItemSettings.DisplayBlogMenuItem,
                 DisplayForumsMenuItem = _displayDefaultMenuItemSettings.DisplayForumsMenuItem,
                 DisplayContactUsMenuItem = _displayDefaultMenuItemSettings.DisplayContactUsMenuItem,
-                UseAjaxMenu = _catalogSettings.UseAjaxLoadMenu
+                UseAjaxMenu = _catalogSettings.UseAjaxLoadMenu,
+                HeaderLinksModel = await _commonModelFactory.PrepareHeaderLinksModelAsync()
             };
 
             return model;
